@@ -1,6 +1,9 @@
-﻿System.Console.WriteLine("============================================");
-System.Console.WriteLine("     MANIPULACIÓN DE CADENAS Y ARREGLOS");
-System.Console.WriteLine("============================================");
+﻿using System.ComponentModel.DataAnnotations;
+
+Console.Clear();
+System.Console.WriteLine("==========================================================");
+System.Console.WriteLine("            MANIPULACIÓN DE CADENAS Y ARREGLOS");
+System.Console.WriteLine("==========================================================");
 
 //Manipular cadenas de texto
 string textoBase = "Sistema de Programación en CSharp y Python";
@@ -34,9 +37,9 @@ Console.ReadKey();
 
 //Arreglos paralelos
 Console.Clear();
-System.Console.WriteLine("============================================");
-System.Console.WriteLine("            ARREGLOS PARALELOS");
-System.Console.WriteLine("============================================");
+System.Console.WriteLine("=============================================");
+System.Console.WriteLine("             ARREGLOS PARALELOS");
+System.Console.WriteLine("=============================================");
 
 //Declaración de arreglos alineados por indice
 string[] nombreEmpleados={"Anthony", "Jorge", "Emilia", "Marco", "Ellie"};
@@ -72,3 +75,35 @@ else
 }
 System.Console.WriteLine("Presione cualquier tecla para continuar con el bloque 3...");
 Console.ReadKey();
+
+//Estructura combinada - Lista de objetos
+Console.Clear();
+System.Console.WriteLine("=============================================================");
+System.Console.WriteLine("                     ESTRUCTURA COMBINADA");
+System.Console.WriteLine("=============================================================");
+
+//Lista de usuarios tipo usuarioPLanta
+List<UsuarioPlanta> listaUsuarios=new List<UsuarioPlanta>
+{
+    new UsuarioPlanta {Nombre="Carlos Quispe", Email="carlos.q@gmail.com", Ciudad="Lima"},
+    new UsuarioPlanta {Nombre="Ana Lopez", Email="ana.l@gmail.com", Ciudad="Arequipa"},
+    new UsuarioPlanta {Nombre="Bruno Mars", Email="bruno.m@gmail.com", Ciudad="Trujillo"},
+    new UsuarioPlanta {Nombre="Diana Torres", Email="diana.t@gmail.com", Ciudad="Lima"},
+    new UsuarioPlanta {Nombre="Miles Morales", Email="miles.m@gmail.com", Ciudad="Cusco"}
+};
+
+System.Console.WriteLine($"Se ha cargado {listaUsuarios.Count} usuarios en la estructura combinada");
+foreach(var u in listaUsuarios)
+{
+    System.Console.WriteLine($"- {u.Nombre} | Email: {u.Email} | Ciudad: {u.Ciudad}");
+}
+System.Console.WriteLine("Presione cualquier tecla para continuar con el bloque 4...");
+Console.ReadKey();
+
+//Definir la clase
+class UsuarioPlanta
+{
+    public string Nombre {get;set;}="";
+    public string Email{get;set;}="";
+    public string Ciudad{get;set;}="";
+}
