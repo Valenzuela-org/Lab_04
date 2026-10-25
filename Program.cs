@@ -29,5 +29,46 @@ foreach(string palabra in palabras)
 {
     System.Console.WriteLine($"- {palabra}");
 }
-System.Console.WriteLine("Presione cualquier tecla para continuar...");
+System.Console.WriteLine("Presione cualquier tecla para continuar con el bloque 2...");
+Console.ReadKey();
+
+//Arreglos paralelos
+Console.Clear();
+System.Console.WriteLine("============================================");
+System.Console.WriteLine("            ARREGLOS PARALELOS");
+System.Console.WriteLine("============================================");
+
+//Declaración de arreglos alineados por indice
+string[] nombreEmpleados={"Anthony", "Jorge", "Emilia", "Marco", "Ellie"};
+int[] edadEmpleados={23, 17, 28, 18, 13};
+
+System.Console.WriteLine("Listado inicial de personal registrado:");
+for(int i=0;i<nombreEmpleados.Length;i++)
+{
+    System.Console.WriteLine($"- Empleado: {nombreEmpleados[i]} | Edad: {edadEmpleados[i]} años");
+}
+
+//Busqueda por nombre asociado
+System.Console.WriteLine("Ingrese el nombre del colaborador a buscar: ");
+string nombreBuscar =Console.ReadLine()??"";
+int indiceEncontrado=-1;
+for(int i=0;i<nombreEmpleados.Length;i++)
+{
+    if(nombreEmpleados[i].Equals(nombreBuscar.Trim(),StringComparison.OrdinalIgnoreCase))
+    {
+        indiceEncontrado=i;
+        break;
+    }
+}
+if(indiceEncontrado!=-1)
+{
+    System.Console.WriteLine("¡Resultado encontrado!");
+    System.Console.WriteLine($"Nombre: {nombreEmpleados[indiceEncontrado]}");
+    System.Console.WriteLine(($"Edad correspondiente: {edadEmpleados[indiceEncontrado]}"));
+}
+else
+{
+    System.Console.WriteLine("El colaborador buscado no se encuentra en el registro de empleados");
+}
+System.Console.WriteLine("Presione cualquier tecla para continuar con el bloque 3...");
 Console.ReadKey();
