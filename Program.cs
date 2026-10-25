@@ -52,12 +52,12 @@ for(int i=0;i<nombreEmpleados.Length;i++)
 }
 
 //Busqueda por nombre asociado
-System.Console.WriteLine("Ingrese el nombre del colaborador a buscar: ");
+System.Console.Write("Ingrese el nombre del colaborador a buscar: ");
 string nombreBuscar =Console.ReadLine()??"";
 int indiceEncontrado=-1;
 for(int i=0;i<nombreEmpleados.Length;i++)
 {
-    if(nombreEmpleados[i].Equals(nombreBuscar.Trim(),StringComparison.OrdinalIgnoreCase))
+    if(nombreEmpleados[i].Trim().ToLower()==nombreBuscar.Trim().ToLower())
     {
         indiceEncontrado=i;
         break;
@@ -93,11 +93,61 @@ List<UsuarioPlanta> listaUsuarios=new List<UsuarioPlanta>
 };
 
 System.Console.WriteLine($"Se ha cargado {listaUsuarios.Count} usuarios en la estructura combinada");
-foreach(var u in listaUsuarios)
+foreach(UsuarioPlanta u in listaUsuarios)
 {
     System.Console.WriteLine($"- {u.Nombre} | Email: {u.Email} | Ciudad: {u.Ciudad}");
 }
 System.Console.WriteLine("Presione cualquier tecla para continuar con el bloque 4...");
+Console.ReadKey();
+
+//Busqueda textual y ordenamiento
+Console.Clear();
+System.Console.WriteLine("=====================================");
+System.Console.WriteLine("       BUSQUEDA Y ORDENAMIENTO");
+System.Console.WriteLine("=====================================");
+
+//Busqueda por ciudad
+Console.Write("Ingrese la ciudad a buscar (Ejm. Lima): ");
+string ciudadBuscar=Console.ReadLine()??"";
+
+System.Console.WriteLine($"---Resultados para la ciudad: '{ciudadBuscar}'---");
+bool ciudadEncontrada =false;
+foreach (UsuarioPlanta u in listaUsuarios)
+{
+    if (u.Ciudad.Trim().ToLower()==ciudadBuscar.Trim().ToLower())
+    {
+        System.Console.WriteLine($"-{u.Nombre} ({u.Email})");
+        ciudadEncontrada=true;
+    }
+}
+if (!ciudadEncontrada)
+{
+    System.Console.WriteLine("No se encontraron usuarios en esa ciudad");
+}
+
+//Burbuja
+string[] nombresArray=new string [listaUsuarios.Count];
+for(int i=0;i<listaUsuarios.Count;i++)
+{
+    nombresArray[i]=listaUsuarios[i].Nombre;
+}
+for (int i=0;i<nombresArray.Length-1;i++)
+{
+    for (int j=0;j<nombresArray.Length-i-1;j++)
+    {
+        if (string.Compare(nombresArray[j], nombresArray[j+1])>0)
+        {
+            string temp =nombresArray[j];
+            nombresArray[j]=nombresArray[j+1];
+            nombresArray[j+1]=temp;
+        }
+    }
+}
+System.Console.WriteLine("Nombres de usuarios ordenados alfabeticamente");
+foreach(string nombre in nombresArray)
+{
+    System.Console.WriteLine($"- {nombre}");
+}
 Console.ReadKey();
 
 //Definir la clase
